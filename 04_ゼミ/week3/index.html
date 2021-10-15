@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <title>メモアプリ（HTMLに直接追加する）</title>
+  </head>
+  <body>
+    <section>
+      <input id="memo-input" />
+    </section>
+    <button id="add-button">追加</button>
+    <button id="sort-button">並び替える</button>
+    <div id="memo-container"></div>
+    <script>
+      const memoInput = document.getElementById("memo-input")
+      const addButton = document.getElementById("add-button")
+      const memoContainer = document.getElementById("memo-container")
+      const sortButton = document.getElementById("sort-button")
+
+      let memos = []
+      addButton.onclick = function() {
+        memos.push(memoInput.value)
+        console.log(memos)
+
+        memoContainer.innerHTML = ""
+
+        for (let i = 0; i < memos.length; i++) {
+          const text = memos[i]
+          const card = document.createElement("div")
+          card.textContent = text
+          memoContainer.append(card)
+        }
+      }
+      sortButton.onclick = function() {
+        memos.sort()
+        console.log(memos)
+
+        memoContainer.innerHTML = ""
+        for (let i = 0; i < memos.length; i++) {
+          const text = memos[i]
+          const card = document.createElement("div")
+          card.textContent = text
+          memoContainer.append(card)
+        }
+      }
+    </script>
+  </body>
+</html>
