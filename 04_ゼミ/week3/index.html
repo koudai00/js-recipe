@@ -21,10 +21,26 @@
       const sortButton = document.getElementById("sort-button")
 
       let memos = []
+      if (localStorage.memos) {
+        const memosJson = localStorage.memos
+        memos = JSON.parse(memosJson)
+
+        // 表示する処理
+        memoContainer.innerHTML = ""
+        for (let i = 0; i < memos.length; i++) {
+          const text = memos[i]
+          const card = document.createElement("div")
+          card.textContent = text
+          memoContainer.append(card)
+        }
+      }
+
       addButton.onclick = function() {
         memos.push(memoInput.value)
+        localStorage.memos = JSON.stringify(memos)
         console.log(memos)
 
+        // 表示する処理
         memoContainer.innerHTML = ""
 
         for (let i = 0; i < memos.length; i++) {
