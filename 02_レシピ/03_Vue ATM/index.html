@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section id="app">
+      <!-- 入力画面 -->
+      <h3>入力画面</h3>
+      <input v-model="nyuryokugaku" type="text" />
+      <div id="order">入力額：{{ nyuryokugaku }}円</div>
+      <button v-on:click="nyukin">入金</button>
+      <button v-on:click="syukin" v-bind:disabled="nopush">出金</button>
+
+      <!-- 口座残高 -->
+
+      <h3>口座残高</h3>
+      <div>残高：{{ zandaka }}円</div>
+
+      <!-- 取引記録 -->
+      <section id="v-for">
+        <h3>取引記録</h3>
+        <div v-for="torihiki in torihikis">
+          日付: {{ torihiki.date }} <br />
+          操作: {{ torihiki.type }} <br />
+          金額:{{ torihiki.money }} 円<br />
+        </div>
+      </section>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
+</html>
